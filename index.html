@@ -62,11 +62,11 @@
 <script>
     let soundArr = ["NHS","MR","MS","AS","AR"];
     let soundVerbose = ["normal heart sounds", "mitral regurgitation", "mitral stenosis", "aortic stenosis", "aortic regurgitation"];
-    var myAnswer, soundId, correctCounter = 0;
+    var myAnswer, soundId, correctCounter = 0, murmurSound;
     
     function play () {
         soundId = Math.floor(Math.random()*5);
-        let murmurSound = document.getElementById(soundArr[soundId]);
+        murmurSound = document.getElementById(soundArr[soundId]);
         murmurSound.play();
     }
     function answer () {
