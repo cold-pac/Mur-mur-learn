@@ -1,6 +1,6 @@
 <html>
 <head>
-<title> Jash's murmur learner </title>
+<title> Jash's Murmur Learner </title>
 <link rel = "shortcut icon" href = "https://img.fireden.net/a/image/1485/45/1485452114585.gif">
 <style> 
 	header {
@@ -12,22 +12,28 @@
 		justify-content: center;
 		align-items: center; 
 		
-	} button {
+	} #play {
 		background-color: green; 
 		color: white; 
 		height: 30vh;
 		width: 50vw; 
-	} 
+	} #answers {
+		display: flex; 
+	}
 </style>
 </head>
 <body>
 	<header> Jash's Murmur Learner </header>
 
 <center><div id = "murmurs"> 
- <button> Play </button>  
+ <button id = "play"> Play </button>  
 	</div></center>
-<div id = "answer"> 
-Answer goes here 
+<div id = "answers"> 
+	<div>Normal Heart Sounds (1)</div> 
+	<div>Mitral Stenosis (2)</div>
+	<div>Mitral Regurgitation/incompetence (3)</div>
+	<div>Aortic Stenosis (4)</div>
+	<div>Aortic Regurgitation (5)</div>
 </div> 
 </body>
 </html>
