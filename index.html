@@ -1,7 +1,7 @@
 <html>
 <head>
-<title> Jash's Murmur Learner </title>
-<link rel = "shortcut icon" href = "https://i.pinimg.com/originals/f4/99/11/f4991131a80d639ecd364b7abdaf49a9.jpg">
+<title> Mur-Learn </title>
+<link rel = "shortcut icon" href = "https://www.heartfoundation.org.au/images/uploads/main/heart-img.png">
 <style> 
 	header {
 		text-align: center; 
@@ -60,45 +60,118 @@
 	}
 </style>
 <script>
+
+	/// Variables
     let soundArr = ["NHS","MR","MS","AS","AR"];
     let soundVerbose = ["normal heart sounds", "mitral regurgitation", "mitral stenosis", "aortic stenosis", "aortic regurgitation"];
-    var myAnswer, soundId, correctCounter = 0, murmurSound;
+    var myAnswer, soundId, lastQ = -1, murmurSound;
+	var correctCounter = 0, totalCounter = 0, autoplay = 0;
     
+	/// Play Function
     function play () {
+		// Store and Generate Sounds for Question
+		lastQ = soundId;
         soundId = Math.floor(Math.random()*5);
+		
+		// Prevent repeating same sound
+		while(lastQ === soundId)
+		{
+			soundId = Math.floor(Math.random()*5);
+		}
+
+		// Play Sound
         murmurSound = document.getElementById(soundArr[soundId]);
         murmurSound.play();
     }
+
+	/// Check Answer Function
     function answer () {
-	murmurSound.pause();
+		// Stop Sound
+		murmurSound.pause();
         console.log(myAnswer,soundArr[soundId]);
+
+		// Check Answer
         if (myAnswer == soundArr[soundId]) {
             alert("correct");
             correctCounter++;
-            console.log(correctCounter);
-            document.getElementById("counter").innerHTML = "Score: " + correctCounter;
-            
         } else {
             alert ("incorrect. The correct answer is " + soundVerbose[soundId]);
         }
+
+		// Update Score
+		totalCounter++;
+		document.getElementById("counter").innerHTML = "Score: " + correctCounter + " / " + totalCounter;
+
+		// Autoplay
+		if (autoplay === 1) {
+			play();
+		}
+    }
+
+	/// Key press function
+	document.addEventListener("keypress", keyPress);
+	function keyPress (e) {
+		console.log(e);
+		if(e.key === " ")
+		{
+			play();
+		}
+		if(e.key === '1')
+		{
+			myAnswer = 'NHS';
+			answer();
+		}
+		if(e.key === '2')
+		{
+			myAnswer = 'MS';
+			answer();
+		}
+		if(e.key === '3')
+		{
+			myAnswer = 'MR';
+			answer();
+		}
+		if(e.key === '4')
+		{
+			myAnswer = 'AS';
+			answer();
+		}
+		if(e.key === '5')
+		{
+			myAnswer = 'AR';
+			answer();
+		}
     }
     
+	/// Autoplay
+	function changeAutoplay() {
+		if(autoplay === 1)
+		{
+			autoplay = 0;
+			document.getElementById("autoplay").innerHTML = "Autoplay: Off";
+		} else {
+			autoplay = 1;
+			document.getElementById("autoplay").innerHTML = "Autoplay: On";
+		}
+	}
 
 </script>
 </head>
 <body>
-    <audio id = "NHS" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Normal%20Heart%20Sound-%20normal%20speed.mp3"></audio>
-    <audio id = "MR" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Mitral%20Regurgitation-%20normal%20speed.mp3"></audio>
-    <audio id = "MS" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Mitral%20Stenosis-%20normal%20speed.mp3"></audio>
-    <audio id = "AS" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Aortic%20Stenosis-%20normal%20speed.mp3"></audio>
-    <audio id = "AR" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Aortic%20Regurgitation-%20normal%20speed.mp3"></audio>
+    <audio id = "NHS" src = "./sounds/N.mp3"></audio>
+    <audio id = "MR" src = "./sounds/MR.mp3"></audio>
+    <audio id = "MS" src = "./sounds/MS.mp3"></audio>
+    <audio id = "AS" src = "./sounds/AS.mp3"></audio>
+    <audio id = "AR" src = "./sounds/AR.mp3"></audio>
     
-	<header> Jash's Murmur Learner </header>
+	<header> Murmur Learner</header>
+	<center>(Made by Erol and Jash)</center>
 	
 
 <div id = "container">
 	<div id = "murmurs"> 
- 		<div id = "play" onclick = "play();"> Play </div> 
+		 <div id = "play" onclick = "play();"> Play </div> 
+		 <div id = "autoplay" onclick = "changeAutoplay();"> Autoplay: Off </div> 
 		<!-- <div id = "next"> Next </div>  
 		<div id = "correct">Answer</div> -->
 		<div id = "counter"> Score: 0 </div> 
