@@ -64,20 +64,30 @@
 	/// Variables
     let soundArr = ["NHS","MR","MS","AS","AR"];
     let soundVerbose = ["normal heart sounds", "mitral regurgitation", "mitral stenosis", "aortic stenosis", "aortic regurgitation"];
-    var myAnswer, soundId, lastId = -1, murmurSound;
-	var soundV, lastV;
+    var myAnswer, murmurSound, currentlyPlaying = false;
+	var soundV, soundId; // SoundV = Variant of sound track
+	var lastV, lastId;
+	var llastV, llastId; 
 	var correctCounter = 0, totalCounter = 0, autoplay = 0;
     
 	/// Play Function
     function play () {
+		// Prevent overplaying
+		if(currentlyPlaying){
+			return;
+		}
+		currentlyPlaying = true;
+
 		// Store and Generate Sounds for Question
+		llastId = lastId;
+		llastV = lastV;
 		lastId = soundId;
 		lastV = soundV
         soundId = Math.floor(Math.random()*5);
 		soundV = Math.floor(Math.random()*2);
 
 		// Prevent repeating same sound
-		while(lastV === soundV && lastId === soundId)
+		while((lastV === soundV && lastId === soundId) || (llastV === soundV && llastId === soundId))
 		{
 			soundId = Math.floor(Math.random()*5);
 			soundV = Math.floor(Math.random()*2);
@@ -93,6 +103,7 @@
     function answer () {
 		// Stop Sound
 		murmurSound.pause();
+		currentlyPlaying = false;
         console.log(myAnswer,soundArr[soundId]);
 
 		// Check Answer
@@ -116,7 +127,6 @@
 	/// Key press function
 	document.addEventListener("keypress", keyPress);
 	function keyPress (e) {
-		console.log(e);
 		if(e.key === " ")
 		{
 			play();
