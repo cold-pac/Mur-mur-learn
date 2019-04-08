@@ -65,10 +65,11 @@
     
     function play () {
         soundId = Math.floor(Math.random()*5);
-        let NHS = document.getElementById(soundArr[soundId]);
-        NHS.play();
+        let murmurSound = document.getElementById(soundArr[soundId]);
+        murmurSound.play();
     }
     function answer () {
+	murmurSound.pause();
         console.log(myAnswer,soundArr[soundId]);
         if (myAnswer == soundArr[soundId]) {
             alert("correct");
