@@ -20,21 +20,29 @@
 	} #answers {
 		display: flex; 
 		flex-direction: column; 
+	} #answers div {
+		cursor: cross; 
+		border: 1px dotted blue; 
 	}
 </style>
 </head>
 <body>
 	<header> Jash's Murmur Learner </header>
 
-<center><div id = "murmurs"> 
- <button id = "play"> Play </button>  
+<center>
+	<div id = "murmurs"> 
+ 		<button id = "play"> Play </button> 
+		<button id = "next"> Next </button> 
+		<div id = "counter"> Score: 0 </div> 
 	</div>
-<div id = "answers"> 
-	<div>Normal Heart Sounds (1)</div> 
-	<div>Mitral Stenosis (2)</div>
-	<div>Mitral Regurgitation/incompetence (3)</div>
-	<div>Aortic Stenosis (4)</div>
-	<div>Aortic Regurgitation (5)</div>
-</div> </center>
+	
+	<div id = "answers"> 
+		<div>Normal Heart Sounds (1)</div> 
+		<div>Mitral Stenosis (2)</div>
+		<div>Mitral Regurgitation/incompetence (3)</div>
+		<div>Aortic Stenosis (4)</div>
+		<div>Aortic Regurgitation (5)</div>
+	</div> 
+</center>
 </body>
 </html>
