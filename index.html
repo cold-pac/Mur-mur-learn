@@ -64,23 +64,28 @@
 	/// Variables
     let soundArr = ["NHS","MR","MS","AS","AR"];
     let soundVerbose = ["normal heart sounds", "mitral regurgitation", "mitral stenosis", "aortic stenosis", "aortic regurgitation"];
-    var myAnswer, soundId, lastQ = -1, murmurSound;
+    var myAnswer, soundId, lastId = -1, murmurSound;
+	var soundV, lastV;
 	var correctCounter = 0, totalCounter = 0, autoplay = 0;
     
 	/// Play Function
     function play () {
 		// Store and Generate Sounds for Question
-		lastQ = soundId;
+		lastId = soundId;
+		lastV = soundV
         soundId = Math.floor(Math.random()*5);
-		
+		soundV = Math.floor(Math.random()*2);
+
 		// Prevent repeating same sound
-		while(lastQ === soundId)
+		while(lastV === soundV && lastId === soundId)
 		{
 			soundId = Math.floor(Math.random()*5);
+			soundV = Math.floor(Math.random()*2);
 		}
 
 		// Play Sound
-        murmurSound = document.getElementById(soundArr[soundId]);
+		console.log(soundArr[soundId] + soundV);
+        murmurSound = document.getElementById(soundArr[soundId] + soundV);
         murmurSound.play();
     }
 
@@ -158,11 +163,16 @@
 </script>
 </head>
 <body>
-    <audio id = "NHS" src = "./sounds/N.mp3"></audio>
-    <audio id = "MR" src = "./sounds/MR.mp3"></audio>
-    <audio id = "MS" src = "./sounds/MS.mp3"></audio>
-    <audio id = "AS" src = "./sounds/AS.mp3"></audio>
-    <audio id = "AR" src = "./sounds/AR.mp3"></audio>
+    <audio id = "NHS0" src = "./sounds/N.mp3"></audio>
+    <audio id = "MR0" src = "./sounds/MR.mp3"></audio>
+    <audio id = "MS0" src = "./sounds/MS.mp3"></audio>
+    <audio id = "AS0" src = "./sounds/AS.mp3"></audio>
+	<audio id = "AR0" src = "./sounds/AR.mp3"></audio>
+	<audio id = "NHS1" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Normal%20Heart%20Sound-%20normal%20speed.mp3"></audio>
+    <audio id = "MR1" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Mitral%20Regurgitation-%20normal%20speed.mp3"></audio>
+    <audio id = "MS1" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Mitral%20Stenosis-%20normal%20speed.mp3"></audio>
+    <audio id = "AS1" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Aortic%20Stenosis-%20normal%20speed.mp3"></audio>
+    <audio id = "AR1" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Aortic%20Regurgitation-%20normal%20speed.mp3"></audio>
     
 	<header> Murmur Learner</header>
 	<center>(Made by Erol and Jash)</center>
