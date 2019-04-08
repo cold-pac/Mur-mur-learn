@@ -7,40 +7,107 @@
 		text-align: center; 
 		font-family: Serif; 
 		font-size: 30px; 
-	} #murmurs {
-		display: flex; 
-		justify-content: center;
-		align-items: center; 
 		
+	} #container {
+		/*background-color: yellow; */
+	    	width: 90vw;
+	   	height: 80vh;
+	    	position: absolute;
+	    	top: 50%;
+	    	left: 50%;
+	    	margin-left:-45vw;
+	    	margin-top: -40vh;
+	    	display: flex;
+	    	flex-direction: column;
+	} #murmurs {
+		height: 40vh;
+		width: 90vw;
+		/* background-color: blue; */
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: flex-start; 
 	} #murmurs div {
-		background-color: green; 
-		color: white; 
+	  	background-color: red; 
+      		border: none;
+      		color: white;
+      		padding: 15px 32px;
+      		text-align: center;
+      		text-decoration: none;
+      		display: inline-block;
+      		font-size: 16px;
 	} #answers {
-		display: flex; 
-		flex-direction: column; 
+		height: 40vh;
+		width: 90vw;
+	/*	background-color: red; */
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center; 
 	} #answers div {
 		cursor: crosshair; 
 		border: 1px dotted blue; 
+		background-color: #4CAF50;
+        	border: none;
+        	color: white;
+        	padding: 15px 32px;
+        	text-align: center;
+        	text-decoration: none;
+        	display: inline-block;
+        	font-size: 16px;
 	}
 </style>
+<script>
+    let soundArr = ["NHS","MR","MS","AS","AR"];
+    let soundVerbose = ["normal heart sounds", "mitral regurgitation", "mitral stenosis", "aortic stenosis", "aortic regurgitation"];
+    var myAnswer, soundId, correctCounter = 0;
+    
+    function play () {
+        soundId = Math.floor(Math.random()*5);
+        let NHS = document.getElementById(soundArr[soundId]);
+        NHS.play();
+    }
+    function answer () {
+        console.log(myAnswer,soundArr[soundId]);
+        if (myAnswer == soundArr[soundId]) {
+            alert("correct");
+            correctCounter++;
+            console.log(correctCounter);
+            document.getElementById("counter").innerHTML = "Score: " + correctCounter;
+            
+        } else {
+            alert ("incorrect. The correct answer is " + soundVerbose[soundId]);
+        }
+    }
+    
+
+</script>
 </head>
 <body>
+    <audio id = "NHS" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Normal%20Heart%20Sound-%20normal%20speed.mp3"></audio>
+    <audio id = "MR" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Mitral%20Regurgitation-%20normal%20speed.mp3"></audio>
+    <audio id = "MS" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Mitral%20Stenosis-%20normal%20speed.mp3"></audio>
+    <audio id = "AS" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Aortic%20Stenosis-%20normal%20speed.mp3"></audio>
+    <audio id = "AR" src = "https://rsfatboy119portfolio.000webhostapp.com/murmurproject/Aortic%20Regurgitation-%20normal%20speed.mp3"></audio>
+    
 	<header> Jash's Murmur Learner </header>
+	
 
-<center>
+<div id = "container">
 	<div id = "murmurs"> 
- 		<div id = "play"> Play </button> 
-		<div id = "next"> Next </button> 
+ 		<div id = "play" onclick = "play();"> Play </div> 
+		<!-- <div id = "next"> Next </div> --> 
+		<div id = "correct">Answer</div>
 		<div id = "counter"> Score: 0 </div> 
 	</div>
 	
 	<div id = "answers"> 
-		<div>Normal Heart Sounds (1)</div> 
-		<div>Mitral Stenosis (2)</div>
-		<div>Mitral Regurgitation/incompetence (3)</div>
-		<div>Aortic Stenosis (4)</div>
-		<div>Aortic Regurgitation (5)</div>
+		<div onclick = "myAnswer = 'NHS'; answer();">Normal Heart Sounds (1)</div> 
+		<div onclick = "myAnswer = 'MS'; answer();">Mitral Stenosis (2)</div>
+		<div onclick = "myAnswer = 'MR'; answer();">Mitral Regurgitation/incompetence (3)</div>
+		<div onclick = "myAnswer = 'AS'; answer();">Aortic Stenosis (4)</div>
+		<div onclick = "myAnswer = 'AR'; answer();">Aortic Regurgitation (5)</div>
 	</div> 
-</center>
+</div>
 </body>
 </html>
