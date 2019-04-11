@@ -63,11 +63,15 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center; 
+		} #murmurs div {
+			width: 100%;
 		} #answers {
 			height: 50vh;
 			width: 50vw; 
 			display: flex; 
 			flex-direction: column;
 			justify-content: center; 
+		} #answers div {
+			width: 100%; 
 		}
 	}
