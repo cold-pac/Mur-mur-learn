@@ -15,14 +15,28 @@
 	var llastV, llastId; 
 	var correctCounter = 0, totalCounter = 0, autoplay = 0;
     
+	// Change Play State
+	function changeState() {
+		if(currentlyPlaying){
+			currentlyPlaying = false;
+			document.getElementById('play').innerHTML = "Play";
+
+		} else {
+			currentlyPlaying = true;
+			document.getElementById('play').innerHTML = "Replay";
+		}
+	}
+
 	/// Play Function
     function play () {
 		// Prevent overplaying
 		if(currentlyPlaying){
+			murmurSound.pause();
+			murmurSound.play();
 			return;
 		}
-		currentlyPlaying = true;
-
+		changeState();
+		
 		// Store and Generate Sounds for Question
 		llastId = lastId;
 		llastV = lastV;
@@ -48,7 +62,8 @@
     function answer () {
 		// Stop Sound
 		murmurSound.pause();
-		currentlyPlaying = false;
+		changeState();
+
         console.log(myAnswer,soundArr[soundId]);
 
 		// Check Answer
@@ -136,7 +151,7 @@
 
 <div id = "container">
 	<div id = "murmurs"> 
-		 <div id = "play" onclick = "play();"> Play </div> 
+		 <div id = "play" onclick = "play();"> Play </div>
 		 <div id = "autoplay" onclick = "changeAutoplay();"> Autoplay: Off </div> 
 		<!-- <div id = "next"> Next </div>  
 		<div id = "correct">Answer</div> -->
