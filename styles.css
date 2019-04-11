@@ -1,4 +1,6 @@
-	header {
+	header div {
+		font-size: 0.5e;
+	} #top {
 		text-align: center; 
 		font-family: Serif; 
 		font-size: 30px; 
