@@ -57,6 +57,23 @@
         	text-decoration: none;
         	display: inline-block;
         	font-size: 16px;
+	} @media (orientation: portrait) {
+		#container {
+			width: 100vw; 
+			height: 100vh; 
+		} #murmurs {
+			height: 50vh;
+			width: 100vw;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center; 
+		} #answers {
+			height: 50vh;
+			width: 50vw; 
+			display: flex; 
+			flex-direction: column;
+		}
 	}
 </style>
 <script>
