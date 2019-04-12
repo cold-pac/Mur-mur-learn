@@ -8,15 +8,15 @@ header div {
 	
 } #container {
 	/*background-color: yellow; */
-		 width: 90vw;
-		   height: 80vh;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-left:-45vw;
-		margin-top: -40vh;
-		display: flex;
-		flex-direction: column;
+	width: 90vw;
+	height: 80vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left:-45vw;
+	margin-top: -40vh;
+	display: flex;
+	flex-direction: column;
 } #murmurs {
 	height: 40vh;
 	width: 90vw;
@@ -26,14 +26,14 @@ header div {
 	justify-content: space-around;
 	align-items: flex-start; 
 } #murmurs div {
-	  background-color: red; 
-		  border: none;
-		  color: white;
-		  padding: 15px 32px;
-		  text-align: center;
-		  text-decoration: none;
-		  display: inline-block;
-		  font-size: 16px;
+	background-color: red; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
 } #play {
 	cursor: pointer;
 } #answers {
@@ -48,13 +48,13 @@ header div {
 	cursor: crosshair; 
 	border: 1px dotted blue; 
 	background-color: #4CAF50;
-		border: none;
-		color: white;
-		padding: 15px 32px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 16px;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
 } @media (orientation: portrait) {
 	 body {
 	 	height: 100vh;
@@ -62,9 +62,7 @@ header div {
 	 } header {
 		 display: none;
 	}#container { 
-		background-color: black;
 	} #murmurs {
-		background-color: yellow;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -72,7 +70,6 @@ header div {
 	} #murmurs div {
 		font-size: 50px;
 	} #answers {
-		background-color: blue;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 	} #answers div {
