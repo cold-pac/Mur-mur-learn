@@ -75,10 +75,9 @@ header div {
 		background-color: blue;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-
 	} #answers div {
 		font-size: 50px; 
-		
 		color: black;
+		height: 200px;
 	}
 }
