@@ -22,7 +22,10 @@ header {
 	text-align: left;
 	grid-area: notes;
 	line-height: 40px;
-}#container {
+} #notes a {
+	text-decoration: none; 
+	color: black; 
+} #container {
 	/*background-color: yellow; */
 	width: 90vw;
 	height: 80vh;
@@ -50,8 +53,8 @@ header {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-} #play {
 	cursor: pointer;
+} #play {
 } #answers {
 	height: 40vh;
 	width: 90vw;
@@ -61,7 +64,7 @@ header {
 	justify-content: space-around;
 	align-items: center; 
 } #answers div {
-	cursor: crosshair; 
+	cursor: pointer; 
 	border: 1px dotted blue; 
 	background-color: #4CAF50;
 	border: none;
