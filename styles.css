@@ -25,6 +25,8 @@ header {
 } #notes a {
 	text-decoration: none; 
 	color: black; 
+} #notes a:hover {
+	text-decoration: underline; 
 } #container {
 	/*background-color: yellow; */
 	width: 90vw;
