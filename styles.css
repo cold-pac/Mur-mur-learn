@@ -2,7 +2,9 @@ header {
 	/* background-color: blue; */
 	width: 30vw;
 	display: grid;
-	grid-template-areas: " head notes"
+	grid-template-areas: " head ."
+			     " head notes"
+			     " names notes"
 			     " names  .";
 }header div {
 	font-size: 15px; 
