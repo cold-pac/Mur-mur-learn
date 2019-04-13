@@ -1,12 +1,28 @@
-header div {
-	font-size: 15px;
-	text-align: center; 
+header {
+	/* background-color: blue; */
+	width: 30vw;
+	display: grid;
+	grid-template-areas: " head notes"
+			     " names  .";
+}header div {
+	font-size: 15px; 
+	text-align: center;
+	height: 100%;
+	width: 100%;
 } #top {
-	text-align: center; 
+	/* background-color: yellow; */
 	font-family: Serif; 
-	font-size: 30px; 
-	
-} #container {
+	font-size: 30px;
+	grid-area: head; 
+} #bottom {
+    /* background-color: green; */
+	grid-area: names;
+} #notes{
+	/* background-color: antiquewhite; */
+	text-align: left;
+	grid-area: notes;
+	line-height: 40px;
+}#container {
 	/*background-color: yellow; */
 	width: 90vw;
 	height: 80vh;
@@ -34,8 +50,8 @@ header div {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	cursor: pointer; 
 } #play {
+	cursor: pointer;
 } #answers {
 	height: 40vh;
 	width: 90vw;
@@ -45,7 +61,7 @@ header div {
 	justify-content: space-around;
 	align-items: center; 
 } #answers div {
-	cursor: pointer; 
+	cursor: crosshair; 
 	border: 1px dotted blue; 
 	background-color: #4CAF50;
 	border: none;
