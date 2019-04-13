@@ -2,6 +2,8 @@ header {
 	/* background-color: blue; */
 	width: 30vw;
 	display: grid;
+	position: relative; 
+	left: 3vw;
 	grid-template-areas: " head ."
 			     " head notes"
 			     " names notes"
