@@ -31,9 +31,11 @@ header {
 	bottom: 2vh;
 } #notes a {
 	text-decoration: none; 
-	color: black; 
 } #notes a:hover {
 	text-decoration: underline; 
+} #notes a:after {
+	content: url(http://upload.wikimedia.org/wikipedia/commons/6/64/Icon_External_Link.png);
+  	margin: 0 0 0 5px;
 } #container {
 	/*background-color: yellow; */
 	width: 90vw;
