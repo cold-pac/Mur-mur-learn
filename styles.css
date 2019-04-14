@@ -105,6 +105,7 @@ header {
 		font-size: 50px;
 	} #answers {
 		display: grid;
+		grid-gap: 10px;
 		grid-template-columns: repeat(2,1fr);
 	} #answers div {
 		font-size: 50px; 
