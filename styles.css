@@ -56,15 +56,18 @@ header {
 	justify-content: space-around;
 	align-items: flex-start; 
 } #murmurs div {
-	background-color: red; 
-	border: none;
-	color: white;
+	
+	border: solid 6px;
+	color: #b50303;
+	font-weight: 900;
 	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
 	cursor: pointer;
+	text-transform: uppercase;
+	padding: 3px 20px 3px 20px;
 } #counter {
 	cursor: not-allowed;
 } #answers {
@@ -77,10 +80,10 @@ header {
 	align-items: center; 
 } #answers div {
 	cursor: pointer; 
-	border: 1px dotted blue; 
-	background-color: #4CAF50;
+	background-color: #ecc70b;
 	border: none;
-	color: white;
+	color: #000000;
+	font-weight: 900;
 	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
