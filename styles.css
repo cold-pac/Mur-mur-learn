@@ -26,6 +26,9 @@ header {
 	text-align: left;
 	grid-area: notes;
 	line-height: 40px;
+	position: absolute; 
+	left: 25vw;
+	bottom: 2vh;
 } #notes a {
 	text-decoration: none; 
 	color: black; 
