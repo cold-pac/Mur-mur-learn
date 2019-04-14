@@ -60,7 +60,8 @@ header {
 	display: inline-block;
 	font-size: 16px;
 	cursor: pointer;
-} #play {
+} #counter {
+	cursor: not-allowed;
 } #answers {
 	height: 40vh;
 	width: 90vw;
