@@ -10,23 +10,42 @@
 
     let soundVerbose = {'normal heart sounds':"normal heart sounds (S1 and S2, heard as a 'lub dub' sound)", 'mitral regurgitation':"mitral regurgitation (pan-systolic, high pitched 'whistling' murmur. May hear a third heart sound (S3). Radiates to the left axilla)", 'mitral stenosis':"mitral stenosis (mid-diastolic, low pitched, rumbling murmur. Loud S1. Loud 'lub' then a 'dub der')", 'aortic stenosis':"aortic stenosis (ejection-systolic, high-pitched murmur, crescendo-decrescendo character. Radiates to the carotids)", 'aortic regurgitation':"aortic regurgitation (early diastolic, soft murmur)"};
 	
-    let correctCounter = 0, totalCounter = 0, autoplay = 0;
+    let correctCounter = 0, totalCounter = 0; 
     
-    let randomAudio; 
-    function play () {
-    	randomAudio = Array.from(document.getElementsByTagName("audio"));
-        randomAudio = randomAudio[Math.floor(Math.random()*randomAudio.length)]; 
-    	randomAudio.play(); 
-         
-        }
-    
+	function quiet () {
+		Array.from(document.getElementsByTagName("audio")).forEach((elem) => {elem.pause()}); 
+	}
+	
+    	let randomAudio; 
+	function generateAudio () {
+		quiet(); 
+    		randomAudio = Array.from(document.getElementsByTagName("audio"));
+        	randomAudio = randomAudio[Math.floor(Math.random()*randomAudio.length)]; 
+    	}
+	generateAudio(); 
+	
+	function play() {
+		quiet(); 
+		randomAudio.play(); 
+	}
+    	
+	function updateScore (diff = 0) {
+		correctCounter += diff;
+		totalCounter++; 
+		document.getElementById("score").innerHTML = "Score: " + correctCounter + "/" + totalCounter;
+	}
+	
 	let myAnswer;
 	function answer () {
 		if (myAnswer == randomAudio.className) {
-			alert("correct"); 
+			alert("correct");
+			updateScore(1);
 		} else {
 			alert("incorrect" + soundVerbose[randomAudio.className]); 
+			updateScore(); 
 		}
+		
+		generateAudio(); 
 	}
 
     
