@@ -16,13 +16,16 @@
 		Array.from(document.getElementsByTagName("audio")).forEach((elem) => {elem.pause()}); 
 	}
 	
-    	let randomAudio; 
+    	let tempThing; 
 	function generateAudio () {
 		quiet(); 
-    		randomAudio = Array.from(document.getElementsByTagName("audio"));
-        	randomAudio = randomAudio[Math.floor(Math.random()*randomAudio.length)]; 
+    		tempThing = Array.from(document.getElementsByTagName("audio"));
+        	return tempThing[Math.floor(Math.random()*tempThing.length)]; 
     	}
-	generateAudio(); 
+	
+	let randomAudio = function () {
+		return generateAudio(); 
+	}
 	
 	function play() {
 		quiet(); 
