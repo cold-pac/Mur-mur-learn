@@ -6,50 +6,85 @@
 
 <script>
 
-    let soundVerbose = ["normal heart sounds (S1 and S2, heard as a 'lub dub' sound)", "mitral regurgitation (pan-systolic, high pitched 'whistling' murmur. May hear a third heart sound (S3). Radiates to the left axilla)", "mitral stenosis (mid-diastolic, low pitched, rumbling murmur. Loud S1. Loud 'lub' then a 'dub der')", "aortic stenosis (ejection-systolic, high-pitched murmur, crescendo-decrescendo character. Radiates to the carotids)", "aortic regurgitation (early diastolic, soft murmur)"];
+   
+
+    let soundVerbose = {'normal heart sounds':"normal heart sounds (S1 and S2, heard as a 'lub dub' sound)", 'mitral regurgitation':"mitral regurgitation (pan-systolic, high pitched 'whistling' murmur. May hear a third heart sound (S3). Radiates to the left axilla)", 'mitral stenosis':"mitral stenosis (mid-diastolic, low pitched, rumbling murmur. Loud S1. Loud 'lub' then a 'dub der')", 'aortic stenosis':"aortic stenosis (ejection-systolic, high-pitched murmur, crescendo-decrescendo character. Radiates to the carotids)", 'aortic regurgitation':"aortic regurgitation (early diastolic, soft murmur)"};
 	
     let correctCounter = 0, totalCounter = 0, autoplay = 0;
+    
+    let randomAudio; 
+    function play () {
+    	randomAudio = Array.from(document.getElementsByTagName("audio"));
+        randomAudio = randomAudio[Math.floor(Math.random()*randomAudio.length)]; 
+    	randomAudio.play(); 
+         
+        }
+    
+	let myAnswer;
+	function answer () {
+		if (myAnswer == randomAudio.className) {
+			alert("correct"); 
+		} else {
+			alert("incorrect" + soundVerbose[randomAudio.className]); 
+		}
+	}
+
     
 	
 </script>
 </head>
 <body>
-    <audio id = "NHS0" src = "./sounds/NH0.mp3"></audio>
-    <audio id = "MR0" src = "./sounds/MR0.mp3"></audio>
-    <audio id = "MS0" src = "./sounds/MS0.mp3"></audio>
-    <audio id = "AS0" src = "./sounds/AS0.mp3"></audio>
-	<audio id = "AR0" src = "./sounds/AR0.mp3"></audio>
-	<audio id = "NHS1" src = "./sounds/NH1.mp3"></audio>
-    <audio id = "MR1" src = "./sounds/MR1.mp3"></audio>
-    <audio id = "MS1" src = "./sounds/MS1.mp3"></audio>
-    <audio id = "AS1" src = "./sounds/AS1.mp3"></audio>
-	<audio id = "AR1" src = "./sounds/AR1.mp3"></audio>
+   <body>
+   	<!-- normal heart sounds --> 
+    <audio class="normal heart sounds" id="NHS0" src="./sounds/NH0.mp3"></audio>
+    <audio class="normal heart sounds" id="NHS1" src="./sounds/NH1.mp3"></audio>
+    
+    <!-- mitral regurgitation --> 
+    <audio class="mitral regurgitation" id="MR0" src="./sounds/MR0.mp3"></audio>
+   	<audio class="mitral regurgitation" id="MR1" src="./sounds/MR1.mp3"></audio>
+    
+    <!-- mitral stenosis --> 
+    <audio class="mitral stenosis" id="MS0" src="./sounds/MS0.mp3"></audio>
+    <audio class="mitral stenosis" id="MS1" src="./sounds/MS1.mp3"></audio>
+    
+    <!-- aortic regurgitation --> 
+    <audio class="aortic regurgitation" id="AR0" src="./sounds/AR0.mp3"></audio>
+    <audio class="aortic regurgitation" id="AR1" src="./sounds/AR1.mp3"></audio>
+    
+    <!-- aortic stenosis --> 
+	<audio class="aortic stenosis" id="AS0" src="./sounds/AS0.mp3"></audio>
+    <audio class="aortic stenosis" id="AS1" src="./sounds/AS1.mp3"></audio>   
+    
+	
 	
 	<center>
 		<header> 
-			<div id = "top"> Murmur Learn </div>
-			<div id = "bottom"> Made by Erol and Jash </div>
-			<div id="notes"><a href="./heart auscultation.pdf" target = "_blank">Notes</a></div>
+			<div id="top"> Murmur Learn </div>
+			<div id="bottom"> Made by Erol and Jash </div>
+			<div id="notes"><a href="./heart auscultation.pdf" target="_blank">Notes</a></div>
 		</header>
 	</center>
 	
 
-<div id = "container">
-	<div id = "murmurs"> 
-		 <div id = "play" onclick = "play();"> Play </div>
-		 <div id = "autoplay" onclick = "changeAutoplay();"> Autoplay: Off </div> 
-		<!-- <div id = "next"> Next </div>  
-		<div id = "correct">Answer</div> -->
-		<div id = "counter" style = "cursor: not-allowed;"> Score: 0 </div> 
+	<div id="container">
+		<div id="murmurs"> 
+			 <div id="play" onclick="play();"> Play </div>
+			 <div id="autoplay" onclick="changeAutoplay();"> Autoplay: Off </div> 
+			<!-- <div id = "next"> Next </div>  
+			<div id = "correct">Answer</div> -->
+			<div id="counter" style="cursor: not-allowed;"> Score: 0 </div> 
+		</div>
+
+		<div id="answers"> 
+			<div onclick="myAnswer = 'normal heart sounds'; answer();">Normal Heart Sounds (1)</div> 
+			<div onclick="myAnswer = 'mitral stenosis'; answer();">Mitral Stenosis (2)</div>
+			<div onclick="myAnswer = 'mitral regurgitation'; answer();">Mitral Regurgitation (3)</div>
+			<div onclick="myAnswer = 'aortic stenosis'; answer();">Aortic Stenosis (4)</div>
+			<div onclick="myAnswer = 'aortic regurgitation'; answer();">Aortic Regurgitation (5)</div>
+		</div> 
 	</div>
-	
-	<div id = "answers"> 
-		<div onclick = "myAnswer = 'NHS'; answer();">Normal Heart Sounds (1)</div> 
-		<div onclick = "myAnswer = 'MS'; answer();">Mitral Stenosis (2)</div>
-		<div onclick = "myAnswer = 'MR'; answer();">Mitral Regurgitation (3)</div>
-		<div onclick = "myAnswer = 'AS'; answer();">Aortic Stenosis (4)</div>
-		<div onclick = "myAnswer = 'AR'; answer();">Aortic Regurgitation (5)</div>
-	</div> 
-</div>
+
+
+</body>
 </body>
 </html>
