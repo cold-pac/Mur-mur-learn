@@ -38,7 +38,7 @@
 	function updateScore (diff = 0) {
 		correctCounter += diff;
 		totalCounter++; 
-		document.getElementById("score").innerHTML = "Score: " + correctCounter + "/" + totalCounter;
+		document.getElementById("counter").innerHTML = "Score: " + correctCounter + "/" + totalCounter;
 	}
 	
 	let myAnswer;
@@ -101,11 +101,11 @@
 		</div>
 
 		<div id="answers"> 
-			<div onclick="myAnswer = 'normal heart sounds'; answer();">Normal Heart Sounds (1)</div> 
-			<div onclick="myAnswer = 'mitral stenosis'; answer();">Mitral Stenosis (2)</div>
-			<div onclick="myAnswer = 'mitral regurgitation'; answer();">Mitral Regurgitation (3)</div>
-			<div onclick="myAnswer = 'aortic stenosis'; answer();">Aortic Stenosis (4)</div>
-			<div onclick="myAnswer = 'aortic regurgitation'; answer();">Aortic Regurgitation (5)</div>
+			<div onclick="myAnswer = 'normal heart sounds'; answer(); generateAudio();">Normal Heart Sounds (1)</div> 
+			<div onclick="myAnswer = 'mitral stenosis'; answer();  generateAudio();">Mitral Stenosis (2)</div>
+			<div onclick="myAnswer = 'mitral regurgitation'; answer();  generateAudio();">Mitral Regurgitation (3)</div>
+			<div onclick="myAnswer = 'aortic stenosis'; answer();  generateAudio();">Aortic Stenosis (4)</div>
+			<div onclick="myAnswer = 'aortic regurgitation'; answer();  generateAudio();">Aortic Regurgitation (5)</div>
 		</div> 
 	</div>
 
