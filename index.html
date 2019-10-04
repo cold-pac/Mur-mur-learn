@@ -16,20 +16,23 @@
 		Array.from(document.getElementsByTagName("audio")).forEach((elem) => {elem.pause()}); 
 	}
 	
-    	let tempThing; 
+    	let randomAudio; 
 	function generateAudio () {
 		quiet(); 
-    		tempThing = Array.from(document.getElementsByTagName("audio"));
-        	return tempThing[Math.floor(Math.random()*tempThing.length)]; 
+    		randomAudio = Array.from(document.getElementsByTagName("audio"));
+        	randomAudio = randomAudio[Math.floor(Math.random()*randomAudio.length)]; 
     	}
 	
-	let randomAudio = function () {
-		return generateAudio(); 
+	window.onload = function () {
+		generateAudio();
+		console.log('works'); 
 	}
+	
+	
 	
 	function play() {
 		quiet(); 
-		randomAudio().play(); 
+		randomAudio.play(); 
 	}
     	
 	function updateScore (diff = 0) {
