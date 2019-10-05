@@ -3,7 +3,7 @@ header {
 	width: 30vw;
 	display: grid;
 	position: relative; 
-	left: 5vw;
+	left: 35vw;
 	grid-template-areas: " head ."
 			     " head notes"
 			     " names notes"
@@ -15,7 +15,7 @@ header {
 	width: 100%;
 } #top {
 	/* background-color: yellow; */
-	font-family: Serif; 
+	font-family: Serif, sans-serif;
 	font-size: 30px;
 	grid-area: head; 
 } #bottom {
@@ -60,7 +60,6 @@ header {
 	border: solid 6px;
 	color: #b50303;
 	font-weight: 900;
-	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
