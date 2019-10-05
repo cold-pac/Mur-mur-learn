@@ -1,4 +1,5 @@
-<html>
+<html lang = "en">
+<!-- AR1.mp3 is incredibly quiet!! -->
 <head>
 <title> Mur-Learn </title>
 <link rel = "shortcut icon" href = "./heart-img.png">
@@ -8,7 +9,12 @@
 
    
 
-    let soundVerbose = {'normal heart sounds':"normal heart sounds (S1 and S2, heard as a 'lub dub' sound)", 'mitral regurgitation':"mitral regurgitation (pan-systolic, high pitched 'whistling' murmur. May hear a third heart sound (S3). Radiates to the left axilla)", 'mitral stenosis':"mitral stenosis (mid-diastolic, low pitched, rumbling murmur. Loud S1. Loud 'lub' then a 'dub der')", 'aortic stenosis':"aortic stenosis (ejection-systolic, high-pitched murmur, crescendo-decrescendo character. Radiates to the carotids)", 'aortic regurgitation':"aortic regurgitation (early diastolic, soft murmur)"};
+    let soundVerbose = {'normal heart sounds':"normal heart sounds (S1 and S2, heard as a 'lub dub' sound)",
+		'mitral regurgitation':"mitral regurgitation (pan-systolic, high pitched 'whistling' murmur. May hear a third heart sound (S3). Radiates to the left axilla)",
+		'mitral stenosis':"mitral stenosis (mid-diastolic, low pitched, rumbling murmur. Loud S1. Loud 'lub' then a 'dub der')",
+		'aortic stenosis':"aortic stenosis (ejection-systolic, high-pitched murmur, crescendo-decrescendo character. Radiates to the carotids)",
+		'aortic regurgitation':"aortic regurgitation (early diastolic, soft murmur)"
+    };
 	
     let correctCounter = 0, totalCounter = 0; 
     
@@ -16,23 +22,48 @@
 		Array.from(document.getElementsByTagName("audio")).forEach((elem) => {elem.pause()}); 
 	}
 	
-    	let randomAudio; 
+	let randomAudio;
 	function generateAudio () {
 		quiet(); 
-    		randomAudio = Array.from(document.getElementsByTagName("audio"));
-        	randomAudio = randomAudio[Math.floor(Math.random()*randomAudio.length)]; 
-    	}
-	
-	window.onload = function () {
-		generateAudio();
-		console.log('works'); 
+		randomAudio = Array.from(document.getElementsByTagName("audio"));
+		randomAudio = randomAudio[Math.floor(Math.random()*randomAudio.length)];
 	}
 	
-	
-	
+
+
+	function changePlayState (state) {
+		if (state) {
+			document.getElementById("play").innerHTML = "Replay";
+		} else {
+			document.getElementById("play").innerHTML = "Play";
+		}
+
+	}
+
+	function autoplayEL () {
+		play();
+	}
+
+	let autoplayAudio = false;
+	function changeAutoplayState (state) {
+		if (state) {
+			document.getElementById("autoplay").innerHTML = "Autoplay: ON";
+			Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
+				elem.addEventListener("click", autoplayEL);
+			});
+		} else {
+			document.getElementById("autoplay").innerHTML = "Autoplay: off";
+			Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
+				elem.removeEventListener("click", autoplayEL);
+			});
+		}
+	}
+
+
 	function play() {
 		quiet(); 
-		randomAudio.play(); 
+		randomAudio.play();
+		changePlayState(true);
 	}
     	
 	function updateScore (diff = 0) {
@@ -40,26 +71,55 @@
 		totalCounter++; 
 		document.getElementById("counter").innerHTML = "Score: " + correctCounter + "/" + totalCounter;
 	}
-	
+
+
 	let myAnswer;
 	function answer () {
-		if (myAnswer == randomAudio.className) {
+		if (myAnswer === randomAudio.className) {
 			alert("correct");
 			updateScore(1);
+			changePlayState(false);
 		} else {
 			alert("incorrect. Correct answer is " + soundVerbose[randomAudio.className]); 
-			updateScore(); 
+			updateScore();
+			changePlayState(false);
 		}
-		
-		generateAudio(); 
 	}
 
-    
+
+	document.onkeypress = function (event) {
+
+		switch(event.key) {
+			case "1":
+				document.getElementById("NHS").click();
+				break;
+			case "2":
+				document.getElementById("MS").click();
+				break;
+			case "3":
+				document.getElementById("MR").click();
+				break;
+			case "4":
+				document.getElementById("AS").click();
+				break;
+			case "5":
+				document.getElementById("AR").click();
+				break;
+		}
+	};
+
+	window.onload = function () {
+		generateAudio();
+		console.log('works');
+		document.getElementById("autoplay").onclick = function () {
+			autoplayAudio = !autoplayAudio;
+			changeAutoplayState(autoplayAudio);
+		}
+	};
 	
 </script>
 </head>
 <body>
-   <body>
    	<!-- normal heart sounds --> 
     <audio class="normal heart sounds" id="NHS0" src="./sounds/NH0.mp3"></audio>
     <audio class="normal heart sounds" id="NHS1" src="./sounds/NH1.mp3"></audio>
@@ -81,14 +141,12 @@
     <audio class="aortic stenosis" id="AS1" src="./sounds/AS1.mp3"></audio>   
     
 	
-	
-	<center>
+
 		<header> 
 			<div id="top"> Murmur Learn </div>
 			<div id="bottom"> Made by Erol and Jash </div>
 			<div id="notes"><a href="./heart auscultation.pdf" target="_blank">Notes</a></div>
 		</header>
-	</center>
 	
 
 	<div id="container">
@@ -101,15 +159,15 @@
 		</div>
 
 		<div id="answers"> 
-			<div onclick="myAnswer = 'normal heart sounds'; answer(); generateAudio(); quiet()">Normal Heart Sounds (1)</div> 
-			<div onclick="myAnswer = 'mitral stenosis'; answer();  generateAudio(); quiet(); ">Mitral Stenosis (2)</div>
-			<div onclick="myAnswer = 'mitral regurgitation'; answer();  generateAudio(); quiet(); ">Mitral Regurgitation (3)</div>
-			<div onclick="myAnswer = 'aortic stenosis'; answer();  generateAudio(); quiet(); ">Aortic Stenosis (4)</div>
-			<div onclick="myAnswer = 'aortic regurgitation'; answer();  generateAudio(); quiet();">Aortic Regurgitation (5)</div>
+			<div class = "answers" id = "NHS" onclick="myAnswer = 'normal heart sounds'; answer(); generateAudio(); quiet()">Normal Heart Sounds (1)</div>
+			<div class = "answers" id = "MS" onclick="myAnswer = 'mitral stenosis'; answer();  generateAudio(); quiet(); ">Mitral Stenosis (2)</div>
+			<div class = "answers" id = "MR" onclick="myAnswer = 'mitral regurgitation'; answer();  generateAudio(); quiet(); ">Mitral Regurgitation (3)</div>
+			<div class = "answers" id = "AS" onclick="myAnswer = 'aortic stenosis'; answer();  generateAudio(); quiet(); ">Aortic Stenosis (4)</div>
+			<div class = "answers" id = "AR" onclick="myAnswer = 'aortic regurgitation'; answer();  generateAudio(); quiet();">Aortic Regurgitation (5)</div>
 		</div> 
 	</div>
 
 
-</body>
+
 </body>
 </html>
