@@ -2,7 +2,9 @@ let soundVerbose = {'normal heart sounds':"normal heart sounds (S1 and S2, heard
     'mitral regurgitation':"mitral regurgitation (pan-systolic, high pitched 'whistling' murmur. May hear a third heart sound (S3). Radiates to the left axilla)",
     'mitral stenosis':"mitral stenosis (mid-diastolic, low pitched, rumbling murmur. Loud S1. Loud 'lub' then a 'dub der')",
     'aortic stenosis':"aortic stenosis (ejection-systolic, high-pitched murmur, crescendo-decrescendo character. Radiates to the carotids)",
-    'aortic regurgitation':"aortic regurgitation (early diastolic, soft murmur)"
+    'aortic regurgitation':"aortic regurgitation (early diastolic, soft murmur)",
+    'S3': 'S3: Sounds like lub de dub (Kentucky cadence), heard roughly 0.1 seconds after the second heart sound. Caused by rapid ventricular filling, causing the chordae tendinae to pull to their full length and twang like a guitar string.  indicates heart failure because the ventricles and chordae are stiff and weak and reach their limit much quicker than normal.',
+    'S4': ' heard before S1, sounds like le lub dub (Tenesse cadence). Caused by turbulent flow from an atria contracting against a non-compliant (stiff or hypertrophic) ventricle'
 };
 
 let correctCounter = 0, totalCounter = 0;
@@ -97,6 +99,12 @@ document.onkeypress = function (event) {
             break;
         case "5":
             document.getElementById("AR").click();
+            break;
+        case "6":
+            document.getElementById("S3").click();
+            break;
+        case "7":
+            document.getElementById("S4").click();
             break;
         case "p":
             document.getElementById("play").click();
