@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <title>Library</title>
     <style>
+        #container {
+            display: grid;
+            grid-template-columns: repeat(1fr, 2);
+        }
         ul {
             list-style-type: none;
-            margin: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,12 +36,13 @@
 
         @media(orientation: portrait) {
             #container {
+                display: block;
                 position: relative;
                 right: 10px;
             }
             ul li {
                 width: 100vw;
-                font-size: 40px;
+                font-size: 50px;
             }
         }
 
