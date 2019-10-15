@@ -43,6 +43,16 @@
     <audio class="aortic stenosis" id="AS1" src="./sounds/AS1.mp3"></audio>
 	<audio class="aortic stenosis" src="sounds/EA_severe_AS.mp3"></audio>
 	<audio class="aortic stenosis" src="sounds/lateas.mp3"></audio>
+
+	<!-- S3 -->
+
+	<!-- S4 -->
+
+	<!-- splitting of S2 -->
+
+	<!--pulmonary stenosis -->
+
+	<!-- pericardial friction rub -->
     
 	
 
@@ -50,20 +60,27 @@
 			<div id="top"> Murmur Learn </div>
 			<div id="bottom"> Made by Erol and Jash </div>
 			<div id="notes"><a href="./heart auscultation.pdf" target="_blank">Notes</a></div>
+			<div id = "library"><a href="library.html" target="_blank">Library</a></div>
 		</header>
 	
 
 	<div id="container">
-		<div id="murmurs"> 
-			 <div id="play" onclick="play();"> Play </div>
-			 <div id="autoplay" onclick="changeAutoplay();"> Autoplay: Off </div> 
-			<!-- <div id = "next"> Next </div>  
-			<div id = "correct">Answer</div> -->
-			<div id="counter" style="cursor: not-allowed;"> Score: 0 </div> 
+		<div id="murmurs">
+			<div id = "gameOptions">
+				<div id="play" onclick="play();"> Play (p) </div>
+				<div id="autoplay" onclick="changeAutoplay();"> Autoplay: Off (a)</div>
+				<!-- <div id = "next"> Next </div>
+                <div id = "correct">Answer</div> -->
+				<div id="counter" style="cursor: not-allowed;"> Score: 0 </div>
+			</div>
+			<div id = "information">
+				<div id = "murmur-information">asdfasdfasdf </div>
+				<div id = "next-button"><button>Ok (Enter)</button></div>
+			</div>
 		</div>
 
 		<div id="answers"> 
-			<div class = "answers" id = "NHS" onclick="myAnswer = 'normal heart sounds'; answer(); generateAudio(); quiet()">Normal Heart Sounds (1)</div>
+			<div class = "answers" id = "NHS" onclick="myAnswer = 'normal heart sounds'; answer();generateAudio(); quiet();">Normal Heart Sounds (1)</div>
 			<div class = "answers" id = "MS" onclick="myAnswer = 'mitral stenosis'; answer();  generateAudio(); quiet(); ">Mitral Stenosis (2)</div>
 			<div class = "answers" id = "MR" onclick="myAnswer = 'mitral regurgitation'; answer();  generateAudio(); quiet(); ">Mitral Regurgitation (3)</div>
 			<div class = "answers" id = "AS" onclick="myAnswer = 'aortic stenosis'; answer();  generateAudio(); quiet(); ">Aortic Stenosis (4)</div>

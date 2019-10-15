@@ -22,9 +22,9 @@ function generateAudio () {
 
 function changePlayState (state) {
     if (state) {
-        document.getElementById("play").innerHTML = "Replay";
+        document.getElementById("play").innerHTML = "Replay (p)";
     } else {
-        document.getElementById("play").innerHTML = "Play";
+        document.getElementById("play").innerHTML = "Play (p)";
     }
 
 }
@@ -36,12 +36,12 @@ function autoplayEL () {
 let autoplayAudio = false;
 function changeAutoplayState (state) {
     if (state) {
-        document.getElementById("autoplay").innerHTML = "Autoplay: ON";
+        document.getElementById("autoplay").innerHTML = "Autoplay: ON (a)";
         Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
             elem.addEventListener("click", autoplayEL);
         });
     } else {
-        document.getElementById("autoplay").innerHTML = "Autoplay: off";
+        document.getElementById("autoplay").innerHTML = "Autoplay: off (a)";
         Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
             elem.removeEventListener("click", autoplayEL);
         });
@@ -62,19 +62,23 @@ function updateScore (diff = 0) {
     document.getElementById("counter").innerHTML = "Score: " + correctCounter + "/" + totalCounter;
 }
 
+function giveInfo (info = "correct") {
+        document.getElementById("murmur-information").innerHTML = info;
+        document.getElementById("information").style.visibility = "visible";
+}
 
 let myAnswer;
-function answer () {
+let answer = function() {
     if (myAnswer === randomAudio.className) {
         alert("correct");
         updateScore(1);
         changePlayState(false);
     } else {
-        alert("incorrect. Correct answer is " + soundVerbose[randomAudio.className]);
+        alert("incorrect. Correct answer was " + soundVerbose[randomAudio.className]);
         updateScore();
         changePlayState(false);
     }
-}
+};
 
 //just adds keybindings to answers
 document.onkeypress = function (event) {
@@ -94,6 +98,11 @@ document.onkeypress = function (event) {
         case "5":
             document.getElementById("AR").click();
             break;
+        case "p":
+            document.getElementById("play").click();
+            break;
+        case "a":
+            document.getElementById("autoplay").click();
     }
 };
 
