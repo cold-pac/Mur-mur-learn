@@ -3,7 +3,7 @@ header {
 	width: 30vw;
 	display: grid;
 	position: relative; 
-	left: 35vw;
+	left: 39.5vw;
 	grid-template-areas: " head ."
 			     " head notes"
 			     " names notes"
