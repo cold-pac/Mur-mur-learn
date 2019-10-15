@@ -76,9 +76,8 @@ function answer () {
     }
 }
 
-
+//just adds keybindings to answers
 document.onkeypress = function (event) {
-
     switch(event.key) {
         case "1":
             document.getElementById("NHS").click();
