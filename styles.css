@@ -119,15 +119,15 @@ header div {
 }
 
 #answers {
-	height: 40vh;
+	height: 15vh;
 	width: 90vw;
 /*	background-color: red; */
 	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	flex-direction: column;
+	justify-content: space-between;
 	align-items: center; 
 }
-#answers div {
+#row1 div, #row2 div {
 	cursor: pointer; 
 	background-color: #ecc70b;
 	border: none;
@@ -138,6 +138,18 @@ header div {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
+}
+#row1 {
+	//width: 100%;
+	/* display: flex;
+	flex-direction: row;
+	justify-content: space-evenly; */
+}
+#row2 {
+	//width: 100%;
+	/* display: flex;
+	flex-direction: row;
+	justify-content: space-evenly; */
 }
 
 @media (orientation: portrait) {

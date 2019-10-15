@@ -53,6 +53,7 @@
 	<!-- <audio class = "S3 and S4" src="sounds/S3_and_S4_littman.mp3"></audio> -->
 
 	<!-- splitting of S2 -->
+	<audio class = "split S2" src="sounds/persistantsplittingofS2_profbuilder.mp3"></audio>
 
 	<!--pulmonary stenosis -->
 
@@ -83,15 +84,20 @@
 			</div>
 		</div>
 
-		<div id="answers"> 
-			<div class = "answers" id = "NHS" onclick="myAnswer = 'normal heart sounds'; answer();generateAudio(); quiet();">Normal Heart Sounds (1)</div>
-			<div class = "answers" id = "MS" onclick="myAnswer = 'mitral stenosis'; answer();  generateAudio(); quiet(); ">Mitral Stenosis (2)</div>
-			<div class = "answers" id = "MR" onclick="myAnswer = 'mitral regurgitation'; answer();  generateAudio(); quiet(); ">Mitral Regurgitation (3)</div>
-			<div class = "answers" id = "AS" onclick="myAnswer = 'aortic stenosis'; answer();  generateAudio(); quiet(); ">Aortic Stenosis (4)</div>
-			<div class = "answers" id = "AR" onclick="myAnswer = 'aortic regurgitation'; answer();  generateAudio(); quiet();">Aortic Regurgitation (5)</div>
-			<div class = "answers" id = "S3" onclick="myAnswer = 'S3'; answer();  generateAudio(); quiet();">S3 (6)</div>
-			<div class = "answers" id = "S4" onclick="myAnswer = 'S4'; answer();  generateAudio(); quiet();">S4 (7)</div>
-		</div> 
+		<div id="answers">
+			<div id = "row1">
+				<div class = "answers" id = "NHS" onclick="myAnswer = 'normal heart sounds'; answer();generateAudio(); quiet();">Normal Heart Sounds (1)</div>
+				<div class = "answers" id = "MS" onclick="myAnswer = 'mitral stenosis'; answer();  generateAudio(); quiet(); ">Mitral Stenosis (2)</div>
+				<div class = "answers" id = "MR" onclick="myAnswer = 'mitral regurgitation'; answer();  generateAudio(); quiet(); ">Mitral Regurgitation (3)</div>
+				<div class = "answers" id = "AS" onclick="myAnswer = 'aortic stenosis'; answer();  generateAudio(); quiet(); ">Aortic Stenosis (4)</div>
+				<div class = "answers" id = "AR" onclick="myAnswer = 'aortic regurgitation'; answer();  generateAudio(); quiet();">Aortic Regurgitation (5)</div>
+			</div>
+			<div id = "row2">
+				<div class = "answers" id = "S3" onclick="myAnswer = 'S3'; answer();  generateAudio(); quiet();">S3 (6)</div>
+				<div class = "answers" id = "S4" onclick="myAnswer = 'S4'; answer();  generateAudio(); quiet();">S4 (7)</div>
+				<div class = "answers" id = "split_S2" onclick="myAnswer = 'split S2'; answer();  generateAudio(); quiet();">split S2 (8)</div>
+			</div>
+		</div>
 	</div>
 
 
