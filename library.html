@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        ul:nth-child(odd) {
+            background-color: antiquewhite;
+        }
+        ul:nth-child(even) {
+            background-color: azure;
+        }
+        ul li {
+            background-color: firebrick;
+            color: white;
+            width: 10em;
+            text-align: center;
+            margin: 2px;
+            cursor: pointer;
+        }
+        
+        ul li:active {
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        @media(orientation: portrait) {
+            #container {
+                position: relative;
+                right: 10px;
+            }
+            ul li {
+                width: 100vw;
+                font-size: 40px;
+            }
+        }
+
+
+    </style>
+    <script>
+        //library will auto-update when you change audio elements
+        
+        function quiet () {
+            Array.from(document.getElementsByTagName("audio")).forEach(function(elem) {
+                elem.pause();
+            })
+        }
+
+        window.onload = function () {
+            let allAudio = Array.from(document.getElementsByTagName("audio"));
+
+            let changingId = 0;
+            allAudio.forEach(function(elem) {
+                elem.name = elem.className; 
+                elem.className = elem.className.split(" ").join("");
+                elem.id = changingId;
+                changingId++; 
+            });
+
+            let alreadyDone = [];
+            for (let x = 0; x < allAudio.length; x++) {
+                if (alreadyDone.indexOf(allAudio[x].className) == -1) {
+                    document.getElementById("container").innerHTML += `<ul id = ${allAudio[x].className}> </ul>`;
+                    console.log(allAudio[x].className);
+                }
+                alreadyDone.push(allAudio[x].className);
+            }
+
+            let classNameCounter = 0, classNameChange;
+            allAudio.forEach(function(element) {
+                if (element.className != classNameChange) {
+                     classNameCounter = 0;
+                }
+
+                classNameChange = element.className;
+                classNameCounter++;
+
+                 document.getElementById(element.className).innerHTML += `<li onclick = 'quiet(); document.getElementById(${element.id}).play();'>${element.name + " " + classNameCounter }</li>`;
+            });
+        }
+
+    </script>
+</head>
+<body>
+<!-- normal heart sounds -->
+<audio class="normal heart sounds" id="NHS0" src="./sounds/NH0.mp3"></audio>
+<audio class="normal heart sounds" id="NHS1" src="./sounds/NH1.mp3"></audio>
+<audio class="normal heart sounds" src = "sounds/wikipedia_normal.ogg"></audio>
+
+
+<!-- mitral regurgitation -->
+<audio class="mitral regurgitation" id="MR0" src="./sounds/MR0.mp3"></audio>
+<audio class="mitral regurgitation" id="MR1" src="./sounds/MR1.mp3"></audio>
+<audio class="mitral regurgitation" src="sounds/mr.mp3"></audio>
+<audio class="mitral regurgitation" src="sounds/mitral_regurg_umich.mp3"></audio>
+
+<!-- mitral stenosis -->
+<audio class="mitral stenosis" id="MS0" src="./sounds/MS0.mp3"></audio>
+<audio class="mitral stenosis" id="MS1" src="./sounds/MS1.mp3"></audio>
+
+<!-- aortic regurgitation -->
+<audio class="aortic regurgitation" id="AR0" src="./sounds/AR0.mp3"></audio>
+<audio class="aortic regurgitation" id="AR1" src="./sounds/AR1.mp3"></audio>
+
+<!-- aortic stenosis -->
+<audio class="aortic stenosis" id="AS0" src="./sounds/AS0.mp3"></audio>
+<audio class="aortic stenosis" id="AS1" src="./sounds/AS1.mp3"></audio>
+<audio class="aortic stenosis" src="sounds/EA_severe_AS.mp3"></audio>
+<audio class="aortic stenosis" src="sounds/lateas.mp3"></audio>
+
+<div id = 'container'>
+
+</div>
+</body>
+</html>
