@@ -93,10 +93,10 @@ let myAnswer;
 let answer = function() {
     if (screen.availWidth > screen.availHeight) {
         if (myAnswer === randomAudio.className) {
-            giveInfo("correct");
+            giveInfo("Correct");
             updateScore(1);
         } else {
-            giveInfo("incorrect.", ("Correct answer was " + soundVerbose[randomAudio.className]));
+            giveInfo("Incorrect.", ("Correct answer was " + soundVerbose[randomAudio.className]));
             updateScore();
         }
     } else {
