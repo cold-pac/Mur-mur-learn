@@ -38,18 +38,32 @@ function autoplayEL () {
 
 let autoplayAudio = false;
 function changeAutoplayState (state) {
-    if (state) {
-        document.getElementById("autoplay").innerHTML = "Autoplay: ON (a)";
-       /*  Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
-            elem.addEventListener("click", autoplayEL);
-        }); */
-       document.getElementById("OK").addEventListener("click", autoplayEL);
+    if (screen.availHeight > screen.availWidth) {
+        if (state) {
+            document.getElementById("autoplay").innerHTML = "Autoplay: ON (a)";
+              Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
+                 elem.addEventListener("click", autoplayEL);
+             });
+        } else {
+            document.getElementById("autoplay").innerHTML = "Autoplay: OFF (a)";
+             Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
+                 elem.removeEventListener("click", autoplayEL);
+             });
+        }
     } else {
-        document.getElementById("autoplay").innerHTML = "Autoplay: OFF (a)";
-       /* Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
-            elem.removeEventListener("click", autoplayEL);
-        }); */
-        document.getElementById("OK").removeEventListener("click", autoplayEL);
+        if (state) {
+            document.getElementById("autoplay").innerHTML = "Autoplay: ON (a)";
+            /*  Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
+                 elem.addEventListener("click", autoplayEL);
+             }); */
+            document.getElementById("Ok").addEventListener("click", autoplayEL);
+        } else {
+            document.getElementById("autoplay").innerHTML = "Autoplay: OFF (a)";
+            /* Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
+                 elem.removeEventListener("click", autoplayEL);
+             }); */
+            document.getElementById("Ok").removeEventListener("click", autoplayEL);
+        }
     }
 }
 
@@ -67,21 +81,35 @@ function updateScore (diff = 0) {
     document.getElementById("counter").innerHTML = "Score: " + correctCounter + "/" + totalCounter;
 }
 
-function giveInfo (info = "correct") {
+function giveInfo (info, info2 = "") {
         // document.getElementById("gameOptions").style.visibility = "hidden";
         //document.getElementById("answers").style.visibility = "hidden";
-        document.getElementById("murmur-information").innerHTML = info;
+        document.getElementById("correctness").innerHTML = info;
+        document.getElementById("murmur-information").innerHTML = info2;
         document.getElementById("information").style.visibility = "visible";
 }
 
 let myAnswer;
 let answer = function() {
-    if (myAnswer === randomAudio.className) {
-        giveInfo("correct");
-        updateScore(1);
+    if (screen.availWidth > screen.availHeight) {
+        if (myAnswer === randomAudio.className) {
+            giveInfo("correct");
+            updateScore(1);
+        } else {
+            giveInfo("incorrect.", ("Correct answer was " + soundVerbose[randomAudio.className]));
+            updateScore();
+        }
     } else {
-        giveInfo("incorrect. Correct answer was " + soundVerbose[randomAudio.className]);
-        updateScore();
+        if (myAnswer === randomAudio.className) {
+            alert("correct");
+            updateScore(1);
+        } else {
+           alert("incorrect. Correct answer was " + soundVerbose[randomAudio.className]);
+            updateScore();
+        }
+        generateAudio();
+        quiet();
+        changePlayState(false);
     }
 };
 

@@ -66,7 +66,6 @@ header div {
 #container {
 	/*background-color: yellow; */
 	width: 90vw;
-	height: 80vh;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -84,11 +83,14 @@ header div {
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+	margin-bottom: 10vh;
 }
 
 #gameOptions {
 	align-self: flex-start;
+	margin-bottom: 10vh;
 }
+
 #gameOptions div {
 	border: solid 6px;
 	color: #b50303;
@@ -104,14 +106,37 @@ header div {
 
 #information {
 	align-self: center;
-	border: 3px solid black;
+	border: 3px solid #e6e6e6;
+	width: 30vw;
+	height: 40vh;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 	visibility: hidden;
+	//margin: 50px;
+	position: relative;
+	left: 1.5vw;
+}
+
+#murmur-information {
+	text-align: center;
+}
+
+#next-button {
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
 }
 #next-button button {
 	color: white;
+	border: none;
+	border-radius: 0.5em;
+	padding: 20px;
 	background-color: cornflowerblue;
+	justify-self: flex-end;
+	cursor: pointer;
 }
 
 #counter {
@@ -160,8 +185,12 @@ header div {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center; 
-	} #murmurs div {
+		align-items: center;
+	position: relative;
+		left: 50%;
+		margin-left: -27vw;
+	}
+	#murmurs div {
 		font-size: 50px;
 	}
 	#information{
@@ -169,15 +198,20 @@ header div {
 	}
 	#answers {
 		width: 90vw;
-		margin-left: -45vw;
+		margin-left: -48vw;
 		display: grid;
 		grid-gap: 10px;
 		grid-template-columns: 1fr 1fr;
-	} #answers div {
+	}
+	#answers div {
 		font-size: 50px; 
 		display: flex;
 		align-items:center;
 		color: black;
 		height: 200px;
+		text-align: center;
+	}
+	.answers {
+		text-align: right;
 	}
 }

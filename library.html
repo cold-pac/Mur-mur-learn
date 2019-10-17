@@ -78,6 +78,8 @@
                 font-size: 50px;
                 position: relative;
                 right: 1vw;
+                font-family: Monospace, serif;
+                text-transform: uppercase;
             }
         }
 
@@ -105,7 +107,7 @@
 
             let alreadyDone = [];
             for (let x = 0; x < allAudio.length; x++) {
-                if (alreadyDone.indexOf(allAudio[x].className) == -1) {
+                if (alreadyDone.indexOf(allAudio[x].className) === -1) {
                     document.getElementById("container").innerHTML += `<ul id = ${allAudio[x].className}> </ul>`;
                     console.log(allAudio[x].className);
                 }
@@ -114,7 +116,7 @@
 
             let classNameCounter = 0, classNameChange;
             allAudio.forEach(function(element) {
-                if (element.className != classNameChange) {
+                if (element.className !== classNameChange) {
                      classNameCounter = 0;
                 }
 
