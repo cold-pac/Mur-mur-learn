@@ -40,14 +40,16 @@ let autoplayAudio = false;
 function changeAutoplayState (state) {
     if (state) {
         document.getElementById("autoplay").innerHTML = "Autoplay: ON (a)";
-        Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
+       /*  Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
             elem.addEventListener("click", autoplayEL);
-        });
+        }); */
+       document.getElementById("OK").addEventListener("click", autoplayEL);
     } else {
-        document.getElementById("autoplay").innerHTML = "Autoplay: off (a)";
-        Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
+        document.getElementById("autoplay").innerHTML = "Autoplay: OFF (a)";
+       /* Array.from(document.getElementsByClassName("answers")).forEach(function(elem) {
             elem.removeEventListener("click", autoplayEL);
-        });
+        }); */
+        document.getElementById("OK").removeEventListener("click", autoplayEL);
     }
 }
 
@@ -77,11 +79,9 @@ let answer = function() {
     if (myAnswer === randomAudio.className) {
         giveInfo("correct");
         updateScore(1);
-        changePlayState(false);
     } else {
         giveInfo("incorrect. Correct answer was " + soundVerbose[randomAudio.className]);
         updateScore();
-        changePlayState(false);
     }
 };
 
@@ -117,6 +117,10 @@ document.onkeypress = function (event) {
             break;
         case "a":
             document.getElementById("autoplay").click();
+            break;
+        case "Enter":
+            document.getElementById("Ok").click();
+            break;
     }
 };
 
