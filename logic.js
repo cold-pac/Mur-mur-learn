@@ -66,6 +66,8 @@ function updateScore (diff = 0) {
 }
 
 function giveInfo (info = "correct") {
+        // document.getElementById("gameOptions").style.visibility = "hidden";
+        //document.getElementById("answers").style.visibility = "hidden";
         document.getElementById("murmur-information").innerHTML = info;
         document.getElementById("information").style.visibility = "visible";
 }
@@ -73,11 +75,11 @@ function giveInfo (info = "correct") {
 let myAnswer;
 let answer = function() {
     if (myAnswer === randomAudio.className) {
-        alert("correct");
+        giveInfo("correct");
         updateScore(1);
         changePlayState(false);
     } else {
-        alert("incorrect. Correct answer was " + soundVerbose[randomAudio.className]);
+        giveInfo("incorrect. Correct answer was " + soundVerbose[randomAudio.className]);
         updateScore();
         changePlayState(false);
     }

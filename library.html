@@ -4,45 +4,79 @@
     <meta charset="UTF-8">
     <title>Library</title>
     <style>
+        html, body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: center;
+            width: 100%;
+        }
         #container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr ;
+            align-items: center;
+            width: 80vw;
         }
         ul {
             list-style-type: none;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-        }
-        ul:nth-child(odd) {
-            background-color: antiquewhite;
+            height: 100%;
         }
         ul:nth-child(even) {
+            background-color: antiquewhite;
+        }
+        ul:nth-child(odd) {
             background-color: azure;
         }
+        ul:nth-child(3n) {
+            background-color: lemonchiffon;
+        }
+        ul:nth-child(7n) {
+            background-color: seashell;
+        }
+        ul:nth-child(4n) {
+            background-color: rgba(255, 181, 94, 0.43);
+        }
         ul li {
-            background-color: firebrick;
-            color: white;
+            border:1px solid #CCC;
+            background:#DDD;
+            border-radius: .5em;
+            box-shadow: inset 0 0 0 0.5px hsla(0,0%,0%,.2), inset 0 1px 0 hsla(0,0%,100%,.1), inset 0 -0.1em 0 hsla(0,0%,100%,.1), inset 0 -0.125em 0 hsla(0,0%,0%,.25), 0 0.125em 0.125em hsla(0,0%,0%,.05);
+            cursor:pointer;
+            vertical-align:middle;
+            padding: 5px;
             width: 10em;
             text-align: center;
             margin: 2px;
-            cursor: pointer;
         }
         
         ul li:active {
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
+            box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.2), inset 0 1px 0 hsla(0,0%,100%,.1), inset 0 0 0 1.5em hsla(0,0%,100%,.2), inset 0 0.125em 0.25em hsla(0,0%,0%,.05), 0 -1px 1px hsla(0,0%,0%,.1), 0 0.25px 0.25px hsla(0,0%,100%,.25);
+            transform: translateY(1px);
         }
 
         @media(orientation: portrait) {
+            html, body {
+                background-color: lemonchiffon;
+            }
             #container {
                 display: block;
                 position: relative;
                 right: 10px;
             }
+            ul {
+                height: auto;
+                width: auto;
+            }
             ul li {
-                width: 100vw;
+                width: 90vw;
+                border-radius: 0;
                 font-size: 50px;
+                position: relative;
+                right: 1vw;
             }
         }
 
@@ -86,7 +120,7 @@
                 classNameChange = element.className;
                 classNameCounter++;
 
-                 document.getElementById(element.className).innerHTML += `<li onclick = 'quiet(); document.getElementById(${element.id}).play();'>${element.name + " " + classNameCounter }</li>`;
+                 document.getElementById(element.className).innerHTML += `<li onclick = 'quiet(); document.getElementById(${element.id}).play();'>${element.name + " (" + classNameCounter + ")" }</li>`;
             });
         }
 
